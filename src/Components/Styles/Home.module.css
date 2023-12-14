@@ -1,0 +1,65 @@
+.homePage{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+
+.savedNotes{
+    height: 100%;
+    width: 28%;
+    background-color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title{
+    padding: 4%;
+    color: #000;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.7px;
+}
+
+.add{
+    position: absolute;
+    bottom: 4%;
+    right: 6%;
+    border-radius: 50%;
+    height: 11%;
+    width: 18%;
+    font-size: 2.8rem;
+    color: white;
+    text-align: center;
+    background-color: #16008B;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.nameCard{
+    height: 10%;
+    width: 70%;
+    margin-top: 3%;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.48px;
+    cursor: pointer;
+}
+
+.profileDP{
+    height: 90%;
+    width: 20%;
+    border-radius: 50%;
+    background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spanName{
+    margin-left: 10%;
+}
