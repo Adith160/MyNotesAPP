@@ -70,3 +70,6 @@ const Home = () => {
 };
 
 export default React.memo(Home);
+
+
+//my code
