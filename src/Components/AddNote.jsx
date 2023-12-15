@@ -34,8 +34,6 @@ function AddNote() {
 
         // Optional: Log the updated data to the console
         console.log('Updated Data:', updatedData);
-
-        window.location.reload()
         }
     }
   return (
