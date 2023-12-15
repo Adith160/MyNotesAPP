@@ -53,7 +53,9 @@ const Home = () => {
                  <div className={styles.add} onClick={handleAddClick}>+</div>
                 {Detail || <Intro />}
             </div>
-            {AddGrp && <div onClick={()=> showAddGrp(false)}
+            {AddGrp && <div onClick={()=> {showAddGrp(false);        
+             const storedGroupData = JSON.parse(localStorage.getItem('groups'));
+            setGroupData(storedGroupData);}}
         style={{
             height: "100vh",
             width: "100vw",
