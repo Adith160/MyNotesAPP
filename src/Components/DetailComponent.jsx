@@ -31,7 +31,6 @@ function DetailComponent(props) {
       }
 
     const handleSaveOnClick = () => {
-        if (NewText !== '') {
             let nextKey = 0;
             if (OldNote !== null && OldNote.length > 0) {
                 nextKey = Math.max(...OldNote.map(note => note.key)) + 1;
@@ -43,7 +42,6 @@ function DetailComponent(props) {
             localStorage.setItem('AllNotes', JSON.stringify(updatedNote));
             setAllNotes(thisGroupNote);
             setNewText(''); 
-        }
     };
 
     return (
@@ -68,7 +66,7 @@ function DetailComponent(props) {
 
             <div className={styles.inputDiv}>
                 <textarea className={styles.inputArea} onChange={(e) => setNewText(e.target.value)} value={NewText}></textarea>
-                <img className={styles.sendImg} src={sendImg} alt="sendImg" onClick={handleSaveOnClick} />
+                <img className={styles.sendImg} src={sendImg} alt="sendImg" onClick={()=>NewText &&  handleSaveOnClick()} />
             </div>
         </div>
     );

@@ -48,8 +48,9 @@ const Home = () => {
                      ))
                     }
 
-                    <div className={styles.add} onClick={handleAddClick}>+</div>
+                   
                 </div>
+                 <div className={styles.add} onClick={handleAddClick}>+</div>
                 {Detail || <Intro />}
             </div>
             {AddGrp && <div onClick={()=> showAddGrp(false)}

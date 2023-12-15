@@ -36,8 +36,23 @@
     height: 60%;
     width: 100%;
     background-color: #DAE5F5;
-    overflow-y: scroll; 
+    overflow-y: auto; 
     overflow-x: hidden;
+    scrollbar-width: thin; 
+    scrollbar-color: white #000000A1; 
+}
+
+.detailsDiv::-webkit-scrollbar {
+    width: 0.6vw; 
+}
+
+.detailsDiv::-webkit-scrollbar-thumb {
+    background-color: white; 
+    border-radius: 1vh;
+}
+
+.detailsDiv::-webkit-scrollbar-track {
+    background-color: #000000A1; 
 }
 
 .oldNotes {

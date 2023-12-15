@@ -1,45 +1,63 @@
-.homePage{
+.homePage {
     height: 100vh;
     width: 100vw;
     display: flex;
     position: relative;
 }
 
-.savedNotes{
-    height: 100%;
+.savedNotes {
+    height: 100vh;
     width: 26%;
     background-color: white;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    overflow-y: auto;
+    scrollbar-width: thin; 
+    scrollbar-color: white #000000A1; 
 }
-.title{
-    padding: 2%;
+
+.savedNotes::-webkit-scrollbar {
+    width: 0.6vw; 
+}
+
+.savedNotes::-webkit-scrollbar-thumb {
+    background-color: white; 
+    border-radius: 1vh;
+}
+
+.savedNotes::-webkit-scrollbar-track {
+    background-color: #000000A1; 
+}
+
+
+.title {
+    padding: 5% 20%;
     color: #000;
     font-size: 1.8rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     letter-spacing: 0.7px;
+    position: sticky;
+    top: 0;
+    background-color: white;
 }
 
-.add{
+.add {
     position: absolute;
-    bottom: 4%;
-    right: 6%;
     border-radius: 50%;
     height: 11%;
-    width: 18%;
+    width: 5%;
     font-size: 2.8rem;
     color: white;
     text-align: center;
     background-color: #16008B;
     font-weight: 700;
     cursor: pointer;
+    bottom: 8%;
+    left: 19%;
 }
 
-.nameCard{
+.nameCard {
     height: 10%;
     width: 100%;
     margin-top: 2%;
@@ -52,7 +70,7 @@
     border-radius: 1vh;
 }
 
-.profileDP{
+.profileDP {
     height: 83%;
     width: 15%;
     border-radius: 50%;
@@ -62,6 +80,6 @@
     margin-left: 15%;
 }
 
-.spanName{
+.spanName {
     margin-left: 10%;
 }
