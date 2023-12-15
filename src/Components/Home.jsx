@@ -2,49 +2,55 @@ import React, { useEffect, useState } from 'react';
 import styles from './Styles/Home.module.css';
 import Intro from './Intro';
 import AddNote from './AddNote';
-//import NameCard from './NameCard';
+import DetailComponent from './DetailComponent'; 
 
-function Home() {
-    const [Detail, showDetail] = useState(false);
+const Home = () => {
+    const [Detail, showDetail] = useState(null); 
     const [AddGrp, showAddGrp] = useState(false);
-    const [GroupData, setGroupData]=useState([]);
+    const [GroupData, setGroupData] = useState([]);
+    const [selectedNote, setSelectedNote] = useState('');
 
-    useEffect(()=>{
-        const storedGroupData= JSON.parse(localStorage.getItem('groups'));
+    useEffect(() => {
+        const storedGroupData = JSON.parse(localStorage.getItem('groups'));
         setGroupData(storedGroupData);
-},[]); 
+    }, []); 
 
-    const getLogo =(n) =>{
-        return n.split(" ").map(word=>word.charAt(0)).join("");
+    const handleDetailClick = (grp) => {
+        showDetail(<DetailComponent gkey={grp.key} color={grp.color} name={grp.groupName}/>);
+        setSelectedNote(grp.key);
+        console.log("key is",grp.key, grp.color, grp.groupName);
     };
-    const handleAddClick=()=>{
-       showAddGrp(true); 
-    }
+
+    const getLogo = (n) => {
+        return n.split(" ").map(word => word.charAt(0)).join("");
+    };
+
+    const handleAddClick = () => {
+        showAddGrp(true); 
+    };
+
     return (
         <>
             <div className={styles.homePage}>
                 <div className={styles.savedNotes}>
                     <h2 className={styles.title}>Pocket Notes</h2>
-                    
                     {
-                        GroupData.map((grp)=>{
-                    return <div className={styles.nameCard}>
-                        <div className={styles.profileDP} key={grp.key} style={{backgroundColor:`${grp.color}`,}}>{getLogo(`${grp.groupName}`)}</div>
-                        <span className={styles.spanName}>{grp.groupName}</span>
-                    </div>
-                        })}
+                        GroupData.map((grp) => (
+                            <div className={styles.nameCard} key={grp.key} 
+                            style={{backgroundColor: selectedNote===grp.key?"#2F2F2F2B":''}}
+                            onClick={() => handleDetailClick(grp)}>
+                                <div className={styles.profileDP} style={{ backgroundColor: `${grp.color}` }}>{getLogo(`${grp.groupName}`)}</div>
+                                <span className={styles.spanName}>{grp.groupName}</span>
+                            </div>
+                        ))
+                    }
                     <div className={styles.add} onClick={handleAddClick}>+</div>
                 </div>
-                {
-                    Detail ? <div className={styles.details}></div> : <Intro />
-                }
-                
-                
-
+                {Detail || <Intro />}
             </div>
-            {AddGrp && <AddNote/>}
+            {AddGrp && <AddNote />}
         </>
     );
-}
+};
 
-export default Home;
+export default React.memo(Home);

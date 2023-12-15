@@ -7,7 +7,7 @@ function Intro() {
     <>
     <div style={{
         height: "100%",
-        width: "72%",
+        width: "74%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

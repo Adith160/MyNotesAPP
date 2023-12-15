@@ -34,11 +34,14 @@ function AddNote() {
 
         // Optional: Log the updated data to the console
         console.log('Updated Data:', updatedData);
+
+        window.location.reload()
         }
     }
   return (
     <home>
-    <div
+    <div 
+    onClick={()=> window.location.reload()}
     style={{
         height: "100vh",
         width: "100vw",
@@ -50,12 +53,15 @@ function AddNote() {
         justifyContent:"center",
         alignItems:"center",
     }}>
-        <div style={{
+        <div 
+        onClick={(e)=> e.stopPropagation()}
+        style={{
             height: "30%",
             width: "40%",
             backgroundColor: "white",
             borderRadius: "1vh",
             display: "flex",
+            position: "absolute",
         }}>
 
             <p style={{
