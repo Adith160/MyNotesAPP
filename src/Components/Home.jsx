@@ -36,15 +36,18 @@ const Home = () => {
                 <div className={styles.savedNotes}>
                     <h2 className={styles.title}>Pocket Notes</h2>
                     {
-                        GroupData.map((grp) => (
-                            <div className={styles.nameCard} key={grp.key} 
-                            style={{backgroundColor: selectedNote===grp.key?"#2F2F2F2B":''}}
-                            onClick={() => handleDetailClick(grp)}>
-                                <div className={styles.profileDP} style={{ backgroundColor: `${grp.color}` }}>{getLogo(`${grp.groupName}`)}</div>
-                                <span className={styles.spanName}>{grp.groupName}</span>
-                            </div>
-                        ))
+                     GroupData && GroupData.map((grp) => (
+                         <div className={styles.nameCard} key={grp.key} 
+                              style={{backgroundColor: selectedNote===grp.key?"#2F2F2F2B":''}}
+                              onClick={() => handleDetailClick(grp)}>
+                             <div className={styles.profileDP} style={{ backgroundColor: `${grp.color}` }}>
+                                 {getLogo(`${grp.groupName}`)}
+                             </div>
+                             <span className={styles.spanName}>{grp.groupName}</span>
+                         </div>
+                     ))
                     }
+
                     <div className={styles.add} onClick={handleAddClick}>+</div>
                 </div>
                 {Detail || <Intro />}

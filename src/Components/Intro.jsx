@@ -33,7 +33,7 @@ function Intro() {
       position: "absolute",
       bottom: "4%",
       left: "40%",
-      fontSize: "16px",
+      fontSize: "1rem",
       fontStyle: "normal",
       fontWeight: "600",
     }}> 
