@@ -11,14 +11,11 @@ function DetailComponent(props) {
     const [OldNote, setOldNote] = useState([]);
 
     useEffect(() => {
-        // Assuming OldNotes is a JSON-formatted string in this example
         const oldNotes = JSON.parse(localStorage.getItem('AllNotes')) || [];
         console.log("oldNotes", oldNotes);
         setOldNote(oldNotes);
-        // Filter oldNotes based on the gKey
         const filteredNotes = oldNotes.filter(note => note.gKey === noteKey);
 
-        // Set the filtered notes in the component's state
         setAllNotes(filteredNotes);
     }, [noteKey]);
 
@@ -45,7 +42,7 @@ function DetailComponent(props) {
             const thisGroupNote= [...AllNotes, NewNote];
             localStorage.setItem('AllNotes', JSON.stringify(updatedNote));
             setAllNotes(thisGroupNote);
-            setNewText(''); // Clear the input after saving
+            setNewText(''); 
         }
     };
 

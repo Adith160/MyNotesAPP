@@ -39,20 +39,7 @@ function AddNote() {
         }
     }
   return (
-    <home>
-    <div 
-    onClick={()=> window.location.reload()}
-    style={{
-        height: "100vh",
-        width: "100vw",
-        position: "absolute",
-        left: "0",
-        top: "0",
-        backgroundColor: "rgba(47, 47, 47, 0.75)",
-        display: "flex",
-        justifyContent:"center",
-        alignItems:"center",
-    }}>
+
         <div 
         onClick={(e)=> e.stopPropagation()}
         style={{
@@ -127,8 +114,6 @@ function AddNote() {
         </div>
 
 
-    </div>
-    </home>
   )
 }
 

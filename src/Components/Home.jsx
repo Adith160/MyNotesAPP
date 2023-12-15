@@ -17,6 +17,7 @@ const Home = () => {
 
     const handleDetailClick = (grp) => {
         showDetail(<DetailComponent gkey={grp.key} color={grp.color} name={grp.groupName}/>);
+
         setSelectedNote(grp.key);
         console.log("key is",grp.key, grp.color, grp.groupName);
     };
@@ -48,7 +49,18 @@ const Home = () => {
                 </div>
                 {Detail || <Intro />}
             </div>
-            {AddGrp && <AddNote />}
+            {AddGrp && <div onClick={()=> showAddGrp(false)}
+        style={{
+            height: "100vh",
+            width: "100vw",
+            position: "absolute",
+            left: "0",
+            top: "0",
+            backgroundColor: "rgba(47, 47, 47, 0.75)",
+            display: "flex",
+            justifyContent:"center",
+            alignItems:"center",
+        }}><AddNote /> </div>}
         </>
     );
 };
