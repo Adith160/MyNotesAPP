@@ -83,3 +83,44 @@
 .spanName {
     margin-left: 10%;
 }
+
+
+@media only screen and (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+    .homePage {
+      flex-direction: column;
+    }
+  
+    .savedNotes {
+      width: 100%;
+      height: 100%;
+    }
+  
+    .add {
+      position: fixed;
+      bottom: 8%;
+      left: 80%;
+      transform: translateX(-50%);
+      height: 8%;
+    width: 16%;
+    font-size: 2.7rem;
+    }
+  
+    .nameCard {
+      height: 8%;
+      margin-top: 1%;
+      font-size: 1rem;
+    }
+  
+    .profileDP {
+      height: 70%;
+      width: 12%;
+      margin-left: 10%;
+    }
+  
+    .spanName {
+      margin-left: 5%;
+    }
+  
+  }
+  

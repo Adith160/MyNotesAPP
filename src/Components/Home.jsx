@@ -2,25 +2,40 @@ import React, { useEffect, useState } from 'react';
 import styles from './Styles/Home.module.css';
 import Intro from './Intro';
 import AddNote from './AddNote';
-import DetailComponent from './DetailComponent'; 
+import DetailComponent from './DetailComponent';
 
 const Home = () => {
-    const [Detail, showDetail] = useState(null); 
-    const [AddGrp, showAddGrp] = useState(false);
-    const [GroupData, setGroupData] = useState([]);
-    const [selectedNote, setSelectedNote] = useState('');
+  const [Detail, showDetail] = useState(null);
+  const [AddGrp, showAddGrp] = useState(false);
+  const [GroupData, setGroupData] = useState([]);
+  const [selectedNote, setSelectedNote] = useState('');
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-    useEffect(() => {
-        const storedGroupData = JSON.parse(localStorage.getItem('groups'));
-        setGroupData(storedGroupData);
-    }, []); 
+  useEffect(() => {
+    const storedGroupData = JSON.parse(localStorage.getItem('groups'));
+    setGroupData(storedGroupData);
+  }, []);
 
-    const handleDetailClick = (grp) => {
-        showDetail(<DetailComponent gkey={grp.key} color={grp.color} name={grp.groupName}/>);
-
-        setSelectedNote(grp.key);
-        console.log("key is",grp.key, grp.color, grp.groupName);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const handleDetailClick = (grp) => {
+    showDetail(
+      <DetailComponent gkey={grp.key} color={grp.color} name={grp.groupName} />
+    );
+
+    setSelectedNote(grp.key);
+    console.log('key is', grp.key, grp.color, grp.groupName);
+  };
 
     const getLogo = (n) => {
         return n.split(" ").map(word => word.charAt(0)).join("");
@@ -32,9 +47,9 @@ const Home = () => {
 
     return (
         <>
-            <div className={styles.homePage}>
-                <div className={styles.savedNotes}>
-                    <h2 className={styles.title}>Pocket Notes</h2>
+          <div className={styles.homePage}>
+            <div className={styles.savedNotes}>
+              <h2 className={styles.title}>Pocket Notes</h2>
                     {
                      GroupData && GroupData.map((grp) => (
                          <div className={styles.nameCard} key={grp.key} 
@@ -49,14 +64,20 @@ const Home = () => {
                     }
 
                    
-                </div>
-                 <div className={styles.add} onClick={handleAddClick}>+</div>
-                {Detail || <Intro />}
-            </div>
-            {AddGrp && <div onClick={()=> {showAddGrp(false);        
-             const storedGroupData = JSON.parse(localStorage.getItem('groups'));
-            setGroupData(storedGroupData);}}
-        style={{
+</div>
+        <div className={styles.add} onClick={handleAddClick}>
+          +
+        </div>
+        {!isMobile && (Detail || <Intro />)}
+      </div>
+      {AddGrp && (
+        <div
+          onClick={() => {
+            showAddGrp(false);
+            const storedGroupData = JSON.parse(localStorage.getItem('groups'));
+            setGroupData(storedGroupData);
+          }}
+          style={{
             height: "100vh",
             width: "100vw",
             position: "absolute",
@@ -66,12 +87,13 @@ const Home = () => {
             display: "flex",
             justifyContent:"center",
             alignItems:"center",
-        }}><AddNote /> </div>}
-        </>
-    );
+        }}
+        >
+          <AddNote />
+        </div>
+      )}
+    </>
+  );
 };
 
 export default React.memo(Home);
-
-
-//my code
