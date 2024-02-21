@@ -45,6 +45,12 @@ const Home = () => {
         showAddGrp(true); 
     };
 
+    const handleAddNoteClose=()=>{
+      showAddGrp(false);
+      const storedGroupData = JSON.parse(localStorage.getItem('groups'));
+      setGroupData(storedGroupData);
+    }
+
     return (
         <>
           <div className={styles.homePage}>
@@ -73,9 +79,7 @@ const Home = () => {
       {AddGrp && (
         <div
           onClick={() => {
-            showAddGrp(false);
-            const storedGroupData = JSON.parse(localStorage.getItem('groups'));
-            setGroupData(storedGroupData);
+            handleAddNoteClose();
           }}
           style={{
             height: "100vh",
@@ -89,7 +93,7 @@ const Home = () => {
             alignItems:"center",
         }}
         >
-          <AddNote />
+          <AddNote handleAddNoteClose={handleAddNoteClose}/>
         </div>
       )}
     </>

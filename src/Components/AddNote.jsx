@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import styles from './Styles/AddNote.module.css';  // Import the CSS module
 
-function AddNote() {
+function AddNote({handleAddNoteClose}) {
     const Color = ['#B38BFA', '#FF79F2', '#43E6FC', '#F19576', '#0047FF', '#6691FF'];
     const [selectedDiv, setselectedDiv] = useState('');
     const [groupName, setGroupName] = useState('');
@@ -37,6 +37,7 @@ function AddNote() {
 
             // Optional: Log the updated data to the console
             console.log('Updated Data:', updatedData);
+            handleAddNoteClose();
         }
     }
 
